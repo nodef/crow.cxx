@@ -1,0 +1,30 @@
+{
+  "name": "crow.cxx",
+  "version": "0.0.0",
+  "description": "A Fast and Easy to use microframework for the web; Jaeseung Ha (2014).",
+  "keywords": [
+    "cxx",
+    "library",
+    "microframework",
+    "web",
+    "http",
+    "rest"
+  ],
+  "homepage": "https://github.com/nodef/crow.cxx#readme",
+  "bugs": {
+    "url": "https://github.com/nodef/crow.cxx/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/crow.cxx.git"
+  },
+  "license": "BSD-3-Clause",
+  "author": "wolfram77@gmail.com",
+  "main": "crow.h",
+  "scripts": {
+    "test": "exit"
+  },
+  "dependencies": {
+    "asio.cxx": "^1.36.1"
+  }
+}
