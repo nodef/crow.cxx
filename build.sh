@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-URL="https://github.com/CrowCpp/Crow/releases/download/v1.3.0/Crow-1.3.0-win64.zip"
+# Fetch the latest version of the library
+fetch() {
+if [ -d "crow" ]; then return; fi
+URL="https://github.com/CrowCpp/Crow/archive/refs/heads/master.zip"
 ZIP="${URL##*/}"
-DIR="${ZIP%.zip}"
+DIR="Crow-master"
 mkdir -p .build
 cd .build
 
@@ -14,7 +17,7 @@ fi
 
 # Unzip the release
 if [ ! -d "$DIR" ]; then
-  echo "Unzipping $ZIP to .build/ ..."
+  echo "Unzipping $ZIP to .build/$DIR ..."
   cp "$ZIP" "$ZIP.bak"
   unzip -q "$ZIP"
   rm "$ZIP"
@@ -25,8 +28,24 @@ cd ..
 
 # Copy the libs to the package directory
 echo "Copying libs to crow/ ..."
-rm -f crow.h
-rm -rf crow/
-cp -rf ".build/$DIR/include/crow.h" .
-cp -rf ".build/$DIR/include/crow" .
+rm -rf crow
+mkdir -p crow
+cp -rf ".build/$DIR/include/crow/"* crow/
+cp -f  ".build/$DIR/include/crow.h" crow/
 echo ""
+}
+
+
+# Test the project
+test() {
+echo "Running 01-simple ..."
+clang++ -std=c++17 -I. -o 01.exe examples/01-simple.cxx   && ./01.exe && echo -e "\n"
+echo "Running 02-pipeline ..."
+clang++ -std=c++17 -I. -o 02.exe examples/02-pipeline.cxx && ./02.exe && echo -e "\n"
+}
+
+
+# Main script
+if [[ "$1" == "test" ]]; then test
+elif [[ "$1" == "fetch" ]]; then fetch
+else echo "Usage: $0 {fetch|test}"; fi
