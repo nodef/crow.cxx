@@ -41,26 +41,12 @@ Available [here](https://crowcpp.org).
 ## Installation
 
 Run:
+
 ```bash
 $ npm i crow.cxx
 ```
 
 And then include `crow.h` as follows:
-```cxx
-// main.cxx
-#include "node_modules/crow.cxx/crow.h"
-
-int main() { /* ... */ }
-```
-
-And then compile with `clang++` or `g++` as usual.
-
-```bash
-$ clang++ main.cxx  # or, use g++
-$ g++     main.cxx
-```
-
-You may also use a simpler approach:
 
 ```cxx
 // main.cxx
@@ -69,13 +55,19 @@ You may also use a simpler approach:
 int main() { /* ... */ }
 ```
 
-If you add the path `node_modules/crow.cxx` to your compiler's include paths.
+Finally, compile while adding the path `node_modules/crow.cxx` to your compiler's include paths.
 
 ```bash
 $ clang++ -I./node_modules/crow.cxx main.cxx  # or, use g++
 $ g++     -I./node_modules/crow.cxx main.cxx
 ```
 
+You may also use a simpler approach with the [cpoach](https://www.npmjs.com/package/cpoach.sh) tool, which automatically adds the necessary include paths of all the installed dependencies for your project.
+
+```bash
+$ cpoach clang++ -std=c++17 main.cxx  # or, use g++
+$ cpoach g++     -std=c++17 main.cxx
+```
 
 > [!WARNING]
 >
@@ -276,5 +268,7 @@ Crow has incorporated the following libraries into its source.
 <br>
 
 
+[![](https://raw.githubusercontent.com/qb40/designs/gh-pages/0/image/11.png)](https://wolfram77.github.io)<br>
+[![SRC](https://img.shields.io/badge/src-repo-green?logo=Org)](https://github.com/CrowCpp/Crow)
 [![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
 ![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/crow.cxx)
